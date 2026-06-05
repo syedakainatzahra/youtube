@@ -1,18 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 
 const videos = [
-  { id: 1, title: "Jannat (HD Video) | Ammy Virk | Tania | B Praak | Jaani | Latest Punjabi Song 202...", channel: "Being Punjabi", views: "10M", time: "2y ago", duration: "3:26", verified: true, isMusic: true, embedId: "H76RscvoT1w" },
-  { id: 2, title: "FURSAT – JEMIIXYZ | Official Audio | Emotional Hindi Urdu Rap | Sad Rap 2026", channel: "JEMIIXYZ", views: "399", time: "11d ago", duration: "3:20", verified: false, isMusic: true, embedId: "qMfvbKBvOtI" },
-  { id: 3, title: "Jhol | Coke Studio Pakistan | Season 15 | Maanu x Annural Khalid", channel: "Coke Studio Pakistan", views: "557M", time: "1y ago", duration: "4:39", verified: true, isMusic: true, embedId: "-2RAq5o5pwc" },
-  { id: 4, title: "Finding Her (Female Version) : Tanishka Bahl | Kushagra | Bharath | Saaheal | UR ...", channel: "UR DEBUT", views: "25M", time: "8mo ago", duration: "3:31", verified: true, isMusic: true, embedId: "3Cp2QTBZAFQ" },
-  { id: 5, title: "Haye Ni Apa Fer Milange, Kde Na Kde Fer Milange (Video Song)| Savi Kahlon| Puls...", channel: "Pulse Beats", views: "1.2M", time: "2y ago", duration: "5:09", verified: false, isMusic: true, embedId: "DLZD47lj82o" },
-  { id: 6, title: "TABOOT 3 Horror Story | Hindi Horror Stories | Skull Towns | Animated Stories...", channel: "Oye.Samar.Villager.-7y-q", views: "55K", time: "1d ago", duration: "24:31", verified: false, embedId: "3hgUqQqgN5c" },
-  { id: 7, title: "The Divine Fury (2019) || Korean Movie🎬 Explained in हिन्दी", channel: "StoryBox", views: "1.4K", time: "7d ago", duration: "20:10", verified: false, embedId: "smku3wZl5bI" },
-  { id: 8, title: "Extinct Animals That Might Still Be Alive – Part 2", channel: "WILD Xfact", views: "243K", time: "2mo ago", duration: "10:28", verified: false, embedId: "D-SxHgx3vno" },
-  { id: 9, title: "Hansel & Gretel Full Story हिंदी اردو Fairy Tale | Witch House Story #hindikahania...", channel: "PixieDream Tales Hindi", views: "106K", time: "1d ago", duration: "15:38", verified: false, dubbed: true, embedId: "gmWWvZ80Fbc" },
-  { id: 10, title: "Meri Zindagi Hai Tu Episode 23 | 23 JAN 2026 | ENG SUB | Hania Aamir | Bilal ...", channel: "ARY Digital HD", views: "23M", time: "3mo ago", duration: "39:09", verified: true, embedId: "VQK7vu-6Vso" },
-  { id: 11, title: "Puri Duniya Tabah Ho Gayi Sirf 1% Log Hi Zinda Bache | The Eternaut Film/Movie ...", channel: "Flick Explained", views: "34K", time: "4d ago", duration: "28:35", verified: false, embedId: "RVMJaNA1Kyw" },
-  { id: 12, title: "Franklin Turned His House Into an Air Force Base in GTA 5 | SHINCHAN and ...", channel: "HAMID-T GAMING", views: "671K", time: "3d ago", duration: "43:33", verified: true, embedId: "hEfL9TbkEDw" },
+  { id: 1, title: "Jannat (HD Video) | Ammy Virk | Tania | B Praak | Jaani | Latest Punjabi Song 202...", category: "Music", channel: "Being Punjabi", views: "10M", time: "2y ago", duration: "3:26", verified: true, isMusic: true, embedId: "H76RscvoT1w" },
+  { id: 2, title: "FURSAT – JEMIIXYZ | Official Audio | Emotional Hindi Urdu Rap | Sad Rap 2026", category: "Music", channel: "JEMIIXYZ", views: "399", time: "11d ago", duration: "3:20", verified: false, isMusic: true, embedId: "qMfvbKBvOtI" },
+  { id: 3, title: "Jhol | Coke Studio Pakistan | Season 15 | Maanu x Annural Khalid",  category: "Music",channel: "Coke Studio Pakistan", views: "557M", time: "1y ago", duration: "4:39", verified: true, isMusic: true, embedId: "-2RAq5o5pwc" },
+  { id: 4, title: "Finding Her (Female Version) : Tanishka Bahl | Kushagra | Bharath | Saaheal | UR ...", category: "Music", channel: "UR DEBUT", views: "25M", time: "8mo ago", duration: "3:31", verified: true, isMusic: true, embedId: "3Cp2QTBZAFQ" },
+  { id: 5, title: "Haye Ni Apa Fer Milange, Kde Na Kde Fer Milange (Video Song)| Savi Kahlon| Puls...",  category: "Music",channel: "Pulse Beats", views: "1.2M", time: "2y ago", duration: "5:09", verified: false, isMusic: true, embedId: "DLZD47lj82o" },
+  { id: 6, title: "TABOOT 3 Horror Story | Hindi Horror Stories | Skull Towns | Animated Stories...",   category: "Ghost stories",channel: "Oye.Samar.Villager.-7y-q", views: "55K", time: "1d ago", duration: "24:31", verified: false, embedId: "3hgUqQqgN5c" },
+  { id: 7, title: "The Divine Fury (2019) || Korean Movie🎬 Explained in हिन्दी",  category: "Korean dramas", channel: "StoryBox", views: "1.4K", time: "7d ago", duration: "20:10", verified: false, embedId: "smku3wZl5bI" },
+  { id: 8, title: "Extinct Animals That Might Still Be Alive – Part 2",   category: "Storytelling",channel: "WILD Xfact", views: "243K", time: "2mo ago", duration: "10:28", verified: false, embedId: "D-SxHgx3vno" },
+  { id: 9, title: "Hansel & Gretel Full Story हिंदी اردو Fairy Tale | Witch House Story #hindikahania...",category: "Storytelling", channel: "PixieDream Tales Hindi", views: "106K", time: "1d ago", duration: "15:38", verified: false, dubbed: true, embedId: "gmWWvZ80Fbc" },
+  { id: 10, title: "Meri Zindagi Hai Tu Episode 23 | 23 JAN 2026 | ENG SUB | Hania Aamir | Bilal ...",category: "Pakistani dramas", channel: "ARY Digital HD", views: "23M", time: "3mo ago", duration: "39:09", verified: true, embedId: "VQK7vu-6Vso" },
+  { id: 11, title: "Puri Duniya Tabah Ho Gayi Sirf 1% Log Hi Zinda Bache | The Eternaut Film/Movie ...",category: "Stroytelling", channel: "Flick Explained", views: "34K", time: "4d ago", duration: "28:35", verified: false, embedId: "RVMJaNA1Kyw" },
+  { id: 12, title: "Franklin Turned His House Into an Air Force Base in GTA 5 | SHINCHAN and ...", category: "Gaming",channel: "HAMID-T GAMING", views: "671K", time: "3d ago", duration: "43:33", verified: true, embedId: "hEfL9TbkEDw" },
   { id: 13, title: "Short #1", channel: "YouTube Shorts", views: "1.5M", time: "3d ago", duration: "0:30", verified: false, isShort: true, embedId: "tBUP7m1RtPI" },
   { id: 14, title: "Short #2", channel: "YouTube Shorts", views: "2.1M", time: "5d ago", duration: "0:45", verified: false, isShort: true, embedId: "y1UVAtHALaA" },
   { id: 15, title: "Short #3", channel: "YouTube Shorts", views: "890K", time: "1d ago", duration: "0:28", verified: false, isShort: true, embedId: "UuuY94mAh-U" },
@@ -21,7 +21,15 @@ const videos = [
   { id: 18, title: "Short #6", channel: "YouTube Shorts", views: "520K", time: "4d ago", duration: "0:35", verified: false, isShort: true, embedId: "V5dMzOXG5N8" },
 ];
 
-const categories = ["All","CID","Ghost stories","Music","Gaming","Mixes","Pakistani dramas","Film criticisms","Storytelling","Korean dramas","Live","News"];
+const categories = [
+  "All",
+  "Ghost stories",
+  "Music",
+  "Gaming",
+  "Storytelling",
+  "Pakistani dramas",
+  "Korean dramas"
+];
 const channelColors = ["#cc0000","#1565c0","#2e7d32","#6a1b9a","#e65100","#00695c","#c62828","#283593","#f57f17","#00838f"];
 const bgColors = ["#1a1a2e","#2d1b4e","#0d2137","#1a2f0d","#2d1a0d","#0d1a2d","#2d0d1a","#1a2d0d","#0d1a1a","#2d2d0d","#1a0d2d","#0d2d1a"];
 
@@ -316,12 +324,10 @@ export default function App() {
     return () => document.removeEventListener("mousedown", clickOutsideHandler);
   }, []);
 
-  const filteredVideos = activeCategory === "All"
+  const filteredVideos =
+  activeCategory === "All"
     ? videos
-    : videos.filter(v =>
-        v.title.toLowerCase().includes(activeCategory.toLowerCase()) ||
-        v.channel.toLowerCase().includes(activeCategory.toLowerCase())
-      );
+    : videos.filter(video => video.category === activeCategory);
 
   const searchedVideos = search
     ? filteredVideos.filter(v =>
@@ -329,6 +335,10 @@ export default function App() {
         v.channel.toLowerCase().includes(search.toLowerCase())
       )
     : filteredVideos;
+    const displayedVideos =
+  activeNav === "Shorts"
+    ? searchedVideos.filter(video => video.isShort)
+    : searchedVideos;
 
   // Suggestion list styling block
   const suggestionBoxStyle = {
@@ -587,8 +597,15 @@ export default function App() {
 
           {/* Video grid / list */}
           {(() => {
-            const normalVideos = searchedVideos.filter(v => !v.isShort);
-            const shortVideos = searchedVideos.filter(v => v.isShort);
+            const normalVideos =
+  activeNav === "Shorts"
+    ? []
+    : displayedVideos.filter(v => !v.isShort);
+
+const shortVideos =
+  activeNav === "Shorts"
+    ? displayedVideos
+    : displayedVideos.filter(v => v.isShort);
             const firstHalf = normalVideos.slice(0, 6);
             const secondHalf = normalVideos.slice(6);
 
@@ -607,7 +624,9 @@ export default function App() {
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                         <svg viewBox="0 0 24 24" width={22} height={22} fill="#ff0000"><path d="M17.77 10.32l-1.2-.5L18 9.06a3.74 3.74 0 1 0-3.5-6.56l-9 4.81A3.75 3.75 0 0 0 7.27 13.7l1.2.5L7 14.94a3.75 3.75 0 1 0 3.5 6.56l9-4.81a3.75 3.75 0 0 0-1.73-6.37z"/></svg>
-                        <span style={{ color: "#0f0f0f", fontSize: 18, fontWeight: 700 }}>Shorts</span>
+                        <span style={{ color: "#0f0f0f", fontSize: 20, fontWeight: 700 }}>
+  {activeNav === "Shorts" ? "All Shorts" : "Shorts"}
+</span>
                       </div>
                       <svg viewBox="0 0 24 24" width={20} height={20} fill="#606060"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
                     </div>
